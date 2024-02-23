@@ -68,7 +68,12 @@ const findOneByFood = (food, done) => {
 };
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findOne({ _id: personId }, function(err, person) {
+    if (err) {
+      return console.error(err);
+    }
+    done(null, person);
+  });
 };
 
 const findEditThenSave = (personId, done) => {
